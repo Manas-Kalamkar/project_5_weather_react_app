@@ -18,7 +18,7 @@ const Rain = ({ weatherData }) => {
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rain</title>
-  <div className="w-full max-w-xl space-y-6">
+  <div className="w-full mt-24 max-w-xl space-y-6">
     {/*Rain Result */}
     <div
       id="rainResult"
