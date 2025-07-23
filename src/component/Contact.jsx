@@ -7,7 +7,7 @@ const Contact = () => {
   className="bg-[#191A23] text-white py-16 px-6 xl:px-32 rounded my-16"
 >
   <div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl lg:text-5xl font-bold tracking-wide mb-6 text-center">
+    <h2 className="text-3xl lg:text-5xl font-bold tracking-wide mb-6 text-center">
       Contact Us
     </h2>
     <p className="text-xl text-center mb-10">
