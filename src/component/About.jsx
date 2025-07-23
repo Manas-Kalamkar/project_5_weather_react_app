@@ -7,7 +7,7 @@ const About = () => {
   className="bg-[#B9FF66] text-gray-900 py-16 px-6 xl:px-32 rounded my-16"
 >
   <div className="max-w-5xl mx-auto text-center">
-    <h2 className="text-4xl lg:text-5xl font-bold tracking-wide mb-6">
+    <h2 className="text-3xl lg:text-5xl font-bold tracking-wide mb-6">
       About Weather
     </h2>
     <p className="text-xl lg:text-2xl leading-relaxed text-gray-700">
