@@ -24,7 +24,7 @@ const Temp = ({ weatherData}) => {
     return (
     <div className=' flex flex-col items-center align-middle'>
   <title>Temperature</title>
-  <div className="w-full max-w-xl space-y-6  items-center">
+  <div className="w-full mt-24 max-w-xl space-y-6  items-center">
     {/*Temp Result */}
     <div
       id="tempResult"
