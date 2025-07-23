@@ -3,11 +3,11 @@ import Lottie from 'lottie-react'
 import arrow from '../assets/arrow.svg'
 import { Link } from 'react-router-dom'
 
-const Card = ({ title,value,unit,animation,learnmore }) => {
+const Card = ({ title,value,unit,animation,learnmore,learnMoreOption }) => {
   return (
     <div>
         <div
-  id="card1"
+  id="card"
   className=" bg-[#D9D9D9] flex rounded-xl  p-[0.6rem] sm:p-[1rem] justify-around  sm:rounded-[37.19px] lg:rounded-[57.19px] max-h-[411px] border-2 border-black sm:py-16 sm:pl-10 "
 >
   <div className="cardLeftSide flex flex-col justify-around">
@@ -16,7 +16,7 @@ const Card = ({ title,value,unit,animation,learnmore }) => {
         <span id="tempSpan" className="font-bold text-white">{title} {value ? <span className='text-3xl font-extrabold bg-linear-to-r from-cyan-500 to-blue-500 text-transparent bg-clip-text lg:text-4xl'>{value}{unit}</span>:''} </span>
       </h1>
     </div>
-    <div className="cardLeftSideDown flex items-center justify-start ">
+    <div className={`cardLeftSideDown ${learnMoreOption ? "flex":"hidden"} items-center justify-start `}>
       <Link to={learnmore}>
         <div className="circle bg-black rounded-3xl p-2 text-[#B]">
           <img src={arrow} alt="" id="arrow" />
