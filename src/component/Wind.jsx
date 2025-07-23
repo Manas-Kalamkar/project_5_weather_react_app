@@ -16,7 +16,7 @@ const Wind = ({ weatherData }) => {
   return (
     <div className=' flex flex-col items-center align-middle'>
  <title>Wind Information</title>
-  <div className="w-full max-w-xl space-y-6">
+  <div className="w-full mt-24 max-w-xl space-y-6">
     {/* Wind Result */}
     <div
       id="windResult"
