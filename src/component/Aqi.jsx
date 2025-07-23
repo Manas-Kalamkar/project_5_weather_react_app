@@ -22,7 +22,7 @@ const Aqi = ({ weatherData }) => {
         <>
   
   <title>Air Quality Index (AQI)</title>
-  <div className="w-full max-w-xl space-y-6">
+  <div className="w-full mt-24 max-w-xl space-y-6">
     {/* AQI Info Card */}
     <div
       id="aqiResult"
