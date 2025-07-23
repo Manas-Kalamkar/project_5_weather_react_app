@@ -7,13 +7,13 @@ const Home = () => {
   return (
     <div>
       {/* home page */}
-      <div id="homePage" className="flex m-4 mt-24 lg:ml-16 justify-around">
+      <div id="homePage" className="flex m-8 lg:mt-24 lg:ml-16 justify-around">
         {/* leftside of homepage */}
         <div id="leftSide" className="flex flex-col gap-6">
           {/* Heading */}
           <div
             id="heading"
-            className="text-3xl font-extrabold w-[18ch] break-words whitespace-normal lg:text-6xl items-center  tracking-widest xl:ml-5  xl:text-[5.4rem] lg:leading-[5.4rem]"
+            className="text-4xl font-extrabold w-[18ch] break-words whitespace-normal lg:text-6xl items-center  tracking-widest xl:ml-5  xl:text-[5.4rem] lg:leading-[5.4rem]"
           >
             Stay Ahead of the Weather, Wherever You Are.
           </div>
