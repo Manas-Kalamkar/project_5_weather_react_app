@@ -37,6 +37,10 @@ function App() {
   const [isLoading,setIsLoading] = useState(false);
   const cardsRef = useRef(null);
 
+  if(errorMessage){
+    setIsLoading(false);
+  }
+
   const main = async (city)=>{
     setErrorMessage('');
     setIsLoading(true);
@@ -134,7 +138,12 @@ function App() {
       speed="0.5"
       autoPlay=""
       loop=""
-      className="w-[100px] h-[100px] md:w-fit fixed " /></div>:""}
+      className="w-[100px] h-[100px] md:w-fit fixed " /></div>:""
+      }
+
+      {
+        errorMessage?<div className="flex items-center justify-center bg-white z-50 mt-10 text-red-500">{errorMessage}</div>:""
+      }
     <Home />
     <Cards weatherData={weatherData} learnMoreOption={learnMoreOption} ref={cardsRef} />
     <About />
