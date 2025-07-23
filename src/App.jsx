@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from 'react-use'
+import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 
 import Header from './component/Header';
 import Home from './component/Home';
@@ -11,21 +12,24 @@ import Aqi from "./component/Aqi";
 import Temp from "./component/Temp";
 import Rain from "./component/Rain";
 import Wind from "./component/Wind";
-
-import { createBrowserRouter,RouterProvider } from 'react-router-dom';
-
 import './App.css'
 
+import Lottie from 'lottie-react';
+import loadingAnimation from './assets/animations/loading.json'
 const API_KEY= import.meta.env.VITE_CITY_API_KEY;
 
 function App() {
+  const [learnMoreOption,setLearnMoreOption]= useState(false);
+  console.log("learnMoreOptions after creating learnMore: ",learnMoreOption);
   const [weatherData,setWeatherData] = useState(()=>{
     try {
     const saved = localStorage.getItem('weatherData');
     return saved ? JSON.parse(saved) : {};
+    
   } catch (error) {
     console.error("Failed to parse weatherData from localStorage:", error);
     localStorage.removeItem('weatherData'); 
+    setLearnMoreOption(false)
     return {};
   }})
   const [searchTerm,setSearchTerm] = useState('');
@@ -41,6 +45,7 @@ function App() {
     console.log(cityName)
     if(!cityName){
       console.log("Please enter the city");
+      setIsLoading(false)
       return
     }
     const coord = await fetchCoordinates(cityName);
@@ -48,9 +53,9 @@ function App() {
 
     if(data){
       setWeatherData({coord,data});
-    }
+      setIsLoading(false)
 
-    setIsLoading(false)
+    }
   }
 
   const fetchCoordinates = async (city)=>{
@@ -113,15 +118,25 @@ function App() {
     useEffect(()=>{
       if(Object.keys(weatherData).length>0){
         localStorage.setItem('weatherData',JSON.stringify(weatherData));
-        cardsRef.current?.scrollIntoView({behavior:'smooth'})
+        cardsRef.current?.scrollIntoView({behavior:'smooth'});
+        setLearnMoreOption(true)
       }
     },[weatherData])
+
 
   const router=createBrowserRouter([
     {path:"/",element:<>
     <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+    {isLoading ? <div className="flex items-center justify-center bg-white z-50 mt-10   "><Lottie 
+      renderer="svg"
+      animationData={loadingAnimation}
+      background="transparent"
+      speed="0.5"
+      autoPlay=""
+      loop=""
+      className="w-[100px] h-[100px] md:w-fit fixed " /></div>:""}
     <Home />
-    <Cards weatherData={weatherData} ref={cardsRef} />
+    <Cards weatherData={weatherData} learnMoreOption={learnMoreOption} ref={cardsRef} />
     <About />
     <Contact />
 
@@ -130,7 +145,7 @@ function App() {
     {path:"/wind",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><Wind weatherData={weatherData} /></>},
     {path:"/rain",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><Rain weatherData={weatherData} /></>},
     {path:"/aqi",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><Aqi weatherData={weatherData} /></>},
-    {path:"/cards",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><Cards weatherData={weatherData}  /></>},
+    {path:"/cards",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><Cards weatherData={weatherData} learnMoreOption={learnMoreOption}/></>},
     {path:"/about",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><About /></>},
     {path:"/contact",element:<><Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /><Contact /></>},
   ],{
