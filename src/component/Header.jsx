@@ -19,12 +19,14 @@ const Header = ({ searchTerm,setSearchTerm }) => {
 
         <header className="bg-white block">
             <nav className="relative flex items-center p-1 justify-between mx-3 mt-4  h-16 md:py-14 xl:gap-10 xl:py-14 xl:px-10">
-                <div className="flex items-center gap-4 xl:gap-8">
-                    <img src={logo} alt="logo" className="object-contain p-4 xl:p-0" />
-                    <h1 className="text-6xl tracking-widest font-bold hidden lg:block xl:ml-5 xl:text-[3.4rem] ">
-                        Weather
-                    </h1>
-                </div>
+                <NavLink to='/' className="hover:cursor-pointer">
+                    <div className="flex items-center gap-4 xl:gap-8">
+                        <img src={logo} alt="logo" className="object-contain p-4 xl:p-0" />
+                        <h1 className="text-6xl tracking-widest font-bold hidden lg:block xl:ml-5 xl:text-[3.4rem] ">
+                            Weather
+                        </h1>
+                    </div>
+                </NavLink>
 
                 <div className="flex items-center gap-4 xl:gap-8">
                     {isSearch ? (
